@@ -1,11 +1,16 @@
 # 140.238.211.75
 # podman rm -f franck ; podman build -t oracle_fdw . ; podman run -d --name franck oracle_fdw
 # podman logs franck ; podman exec -it franck bash
+#
 FROM docker.io/centos/postgresql-12-centos8:latest
+FROM oraclelinux
 USER root
+#
 # this fails # RUN yum update -y
+#
 RUN yum install -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-basic-linuxx64.rpm
 RUN yum install -y git make
+#
 #postgresql-devel 
 ENV POSTGRESQL_ADMIN_PASSWORD postgres
 USER postgres
