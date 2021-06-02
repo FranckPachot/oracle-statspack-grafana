@@ -3,7 +3,7 @@
 # podman logs franck ; podman exec -it franck bash
 FROM docker.io/centos/postgresql-12-centos8:latest
 USER root
-RUN yum update -y
+#RUN yum update -y
 RUN yum install -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-basic-linuxx64.rpm
 RUN yum install -y git 
 #postgresql-devel 
