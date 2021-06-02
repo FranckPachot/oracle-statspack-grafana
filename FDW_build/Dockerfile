@@ -9,6 +9,7 @@ ADD https://github.com/laurenz/oracle_fdw/archive/refs/tags/ORACLE_FDW_2_3_0.zip
 RUN unzip -qd /var/tmp /var/tmp/ORACLE_FDW_2_3_0.zip
 RUN yum install -y make gcc libpq-devel postgresql-devel postgresql-contrib postgresql-server-devel redhat-rpm-config
 #RUN cd /var/tmp/oracle_fdw-ORACLE_FDW_2_3_0 && make
+
 ENV POSTGRESQL_ADMIN_PASSWORD postgresql
 user postgres
 #FROM centos
