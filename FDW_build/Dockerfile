@@ -5,9 +5,9 @@
 FROM docker.io/centos/postgresql-12-centos8:latest
 USER root
 RUN yum install -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-basic-linuxx64.rpm
-RUN yum install -y make
 ADD https://github.com/laurenz/oracle_fdw/archive/refs/tags/ORACLE_FDW_2_3_0.zip /var/tmp
 RUN unzip -qd /var/tmp /var/tmp/ORACLE_FDW_2_3_0.zip
+RUN yum install -y make postgresql-server-devel libpq-devel
 ENV POSTGRESQL_ADMIN_PASSWORD postgresql
 user postgres
 #RUN cd /var/tmp/oracle_fdw-ORACLE_FDW_2_3_0 && make
