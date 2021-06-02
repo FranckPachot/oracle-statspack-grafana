@@ -10,6 +10,8 @@ ADD https://github.com/laurenz/oracle_fdw/archive/refs/tags/ORACLE_FDW_2_3_0.zip
 RUN unzip -qd /var/tmp /var/tmp/ORACLE_FDW_2_3_0.zip
 RUN yum install -y make gcc libpq-devel postgresql-devel postgresql-contrib postgresql-server-devel redhat-rpm-config
 #RUN cd /var/tmp/oracle_fdw-ORACLE_FDW_2_3_0 && ORACLE_HOME=$(dirname $(cat /etc/ld.so.conf.d/oracle-instantclient.conf)) make
+#RUN cd /var/tmp/oracle_fdw-ORACLE_FDW_2_3_0; export ORACLE_HOME=/usr/include/oracle/21/client64 ; make
+RUN echo "franck::0:0:root:/root:/bin/bash" >> /etc/passwd
 
 ENV POSTGRESQL_ADMIN_PASSWORD postgresql
 user postgres
