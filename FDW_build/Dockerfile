@@ -3,7 +3,7 @@
 # podman logs franck ; podman exec -it franck bash
 #
 #FROM docker.io/centos/postgresql-12-centos8:latest
-FROM oraclelinux
+FROM centos
 USER root
 #
 # this fails # RUN yum update -y
