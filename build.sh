@@ -1,14 +1,16 @@
 (
 cd FDW_build
-podman rm -f franck 
+sudo podman rm -f franck 
 echo "=== build"
-podman build -t oracle_fdw . 
+sudo podman build -t oracle_fdw .  ||  exit
 echo "=== images"
-podman images
+sudo podman images
 echo "=== run"
-podman run -d --name franck oracle_fdw
+sudo podman run -d --name franck -e POSTGRESQL_ADMIN_PASSWORD=statspack oracle_fdw
 echo "=== log"
-until podman logs franck | grep -C 999 "listening on IPv4 address" ; do sleep 1; done
+sleep 5
+sudo podman logs franck
+until sudo podman logs franck | grep -C 999 "listening on IPv4 address" ; do sleep 1; done
 echo "=== check"
-podman exec -t franck psql -e -c "select version();" | grep "compiled by gcc" && git commit -am "psql connect" && git push
+sudo podman exec -t franck psql -e -c "select version();" | grep "compiled by gcc" && git commit -am "psql connect" && git push
 )
