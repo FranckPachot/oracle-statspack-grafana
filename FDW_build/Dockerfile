@@ -7,10 +7,10 @@ USER root
 RUN yum install -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-basic-linuxx64.rpm
 ADD https://github.com/laurenz/oracle_fdw/archive/refs/tags/ORACLE_FDW_2_3_0.zip /var/tmp
 RUN unzip -qd /var/tmp /var/tmp/ORACLE_FDW_2_3_0.zip
-RUN yum install -y make postgresql-server-devel libpq-devel
+RUN yum install -y make gcc libpq-devel
+#RUN cd /var/tmp/oracle_fdw-ORACLE_FDW_2_3_0 && make
 ENV POSTGRESQL_ADMIN_PASSWORD postgresql
 user postgres
-#RUN cd /var/tmp/oracle_fdw-ORACLE_FDW_2_3_0 && make
 #FROM centos
 #USER root
 # Oracle Instant Client
