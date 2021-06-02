@@ -8,7 +8,8 @@ RUN yum install -y https://download.oracle.com/otn_software/linux/instantclient/
 ADD https://github.com/laurenz/oracle_fdw/archive/refs/tags/ORACLE_FDW_2_3_0.zip /var/tmp
 RUN unzip -qd /var/tmp /var/tmp/ORACLE_FDW_2_3_0.zip
 RUN yum install -y make gcc libpq-devel postgresql-devel postgresql-contrib postgresql-server-devel redhat-rpm-config
-#RUN cd /var/tmp/oracle_fdw-ORACLE_FDW_2_3_0 && make
+#RUN cd /var/tmp/oracle_fdw-ORACLE_FDW_2_3_0 && ORACLE_HOME=$(dirname $(cat /etc/ld.so.conf.d/oracle-instantclient.conf)) make
+RUN echo 'postgres ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 ENV POSTGRESQL_ADMIN_PASSWORD postgresql
 user postgres
