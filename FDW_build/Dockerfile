@@ -2,7 +2,7 @@
 # podman rm -f franck ; podman build -t oracle_fdw . ; podman run -d --name franck oracle_fdw
 # podman logs franck ; podman exec -it franck bash
 #
-FROM docker.io/centos/postgresql-12-centos8:latest
+#FROM docker.io/centos/postgresql-12-centos8:latest
 FROM oraclelinux
 USER root
 #

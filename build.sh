@@ -3,6 +3,8 @@ cd FDW_build
 podman rm -f franck 
 echo "=== build"
 podman build -t oracle_fdw . 
+echo "=== images"
+podman images
 echo "=== run"
 podman run -d --name franck oracle_fdw
 echo "=== log"
