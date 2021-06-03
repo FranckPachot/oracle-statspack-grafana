@@ -1,3 +1,14 @@
+-- This re-creates the database used to connect to all oracle databases that we monitor with statspack
+select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity where pg_stat_activity.datname = 'oraperfstat';
+drop database if exists oraperfstat;
+create database oraperfstat;
+drop user if exists oraperfstat;
+create user oraperfstat with password 'oraperfstat';
+alter user oraperfstat with superuser;
+-- TODO: limit permissions to read only
+
+\connect oraperfstat oraperfstat
+
 create extension oracle_fdw;
 create foreign data wrapper ora_fdw_utf8
  handler oracle_fdw_handler validator oracle_fdw_validator
@@ -344,4 +355,4 @@ begin
  return query select srvname::text , case when srvname=prefix||name and create_server then ' (added sucessfully)' else '' end  from pg_foreign_server;
  --return format('%s successfully added as FDW server %I with tables in schema %I.',name,prefix||name,prefix||name);
 end;
-$PROCEDURE$;
+$PROCEDURE$; 
