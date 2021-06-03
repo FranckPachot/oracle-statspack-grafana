@@ -1,5 +1,5 @@
 (
-cd FDW_build
+#cd FDW_build
 sudo podman rm -f franck 
 echo "=== build"
 sudo podman build -t oracle_fdw .  ||  exit
