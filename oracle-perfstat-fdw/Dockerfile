@@ -10,6 +10,6 @@ RUN echo $(dirname $(find / -name libclntsh.so 2>/dev/null | tail)) > /etc/ld.so
 RUN ln -s /usr/lib64/libnsl.so.2 /usr/lib64/libnsl.so.1
 RUN sed -ie '/pg_ctl stop/s?^?psql --set=password="$POSTGRESQL_ADMIN_PASSWORD" < /var/tmp/oracle-perfstat-fdw.sql ; ?' /usr/bin/run-postgresql
 RUN echo "franck::0:0:root:/root:/bin/bash" >> /etc/passwd
-ENV POSTGRESQL_ADMIN_PASSWORD postgresql
+ENV POSTGRESQL_ADMIN_PASSWORD postgres
 user postgres
 ADD oracle-perfstat-fdw.sql /var/tmp
