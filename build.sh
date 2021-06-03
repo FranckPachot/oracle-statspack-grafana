@@ -1,5 +1,5 @@
 (
-#cd FDW_build
+cd oracle-perfstat-fdw
 sudo podman rm -f franck 
 echo "=== build"
 sudo podman build -t oracle_fdw .  ||  exit
@@ -12,5 +12,8 @@ sleep 5
 sudo podman logs franck
 until sudo podman logs franck | grep -C 999 "listening on IPv4 address" ; do sleep 1; done
 echo "=== check"
-sudo podman exec -t franck psql -e -c "select version();" | grep "compiled by gcc" && git commit -am "psql connect" && git push
+sudo podman exec -t franck psql -e <<'SQL'
+call  ora$perf$define_perfstat_fdw('pdb1','//database-1.clw0gescgpyk.us-east-1.rds.amazonaws.com:1521/pdb1','perfstat');
+SQL
+git commit -am "psql connect" && git push
 )
