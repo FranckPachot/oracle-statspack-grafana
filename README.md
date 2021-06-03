@@ -6,6 +6,8 @@ Using PostgreSQL Foreign Data Wrapper to read Oracle Statspack metrics from Graf
 (cd oracle-perfstat-fdw && podman build -t oracle-perfstat-fdw && podman run -d -e POSTGRESQL_ADMIN_PASSWORD=franck --name oracle-perfstat-fdw oracle-perfstat-fdw )
 ```
 
+The postgresql password, and the oraperfstat one, are POSTGRESQL_ADMIN_PASSWORD (default: postgres)
+
 This container runs PostgreSQL with Laurenz Albe's Oracle Foreign Data Wrapper (using Oracle instantClient) and provides a procedure to create Foreign Data Wrapper tables, here is an example:
 ```
 podman exec oracle-perfstat-fdw psql -e oraperfstat oraperfstat <<'SQL'
@@ -13,5 +15,5 @@ select  oraperfstat$define_fdw('pdb1','//server:1521/PDB1','perfstat','password'
 SQL
 ```
 This creates the views to query Statspack.
-
+You can use it from Grafana, preferably creating a user with the right privileges.
 
