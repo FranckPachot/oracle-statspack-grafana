@@ -3,7 +3,7 @@ select pg_terminate_backend(pg_stat_activity.pid) from pg_stat_activity where pg
 drop database if exists oraperfstat;
 create database oraperfstat;
 drop user if exists oraperfstat;
-create user oraperfstat with password 'oraperfstat';
+create user oraperfstat with password ':password';
 alter user oraperfstat with superuser;
 -- TODO: limit permissions to read only
 
