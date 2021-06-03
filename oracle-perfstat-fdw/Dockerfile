@@ -8,7 +8,7 @@ RUN yum install -y make gcc libpq-devel postgresql-devel postgresql-contrib post
 RUN cd /var/tmp/oracle_fdw-ORACLE_FDW_2_3_0 && make && make install
 RUN echo $(dirname $(find / -name libclntsh.so 2>/dev/null | tail)) > /etc/ld.so.conf.d/oracle.conf ; ldconfig
 RUN ln -s /usr/lib64/libnsl.so.2 /usr/lib64/libnsl.so.1
-RUN sed -ie '/pg_ctl stop/s?^?psql --set=password="POSTGRESQL_ADMIN_PASSWORD" < /var/tmp/oracle-perfstat-fdw.sql ; ?' /usr/bin/run-postgresql
+RUN sed -ie '/pg_ctl stop/s?^?psql --set=password="$POSTGRESQL_ADMIN_PASSWORD" < /var/tmp/oracle-perfstat-fdw.sql ; ?' /usr/bin/run-postgresql
 RUN echo "franck::0:0:root:/root:/bin/bash" >> /etc/passwd
 ENV POSTGRESQL_ADMIN_PASSWORD postgresql
 user postgres
