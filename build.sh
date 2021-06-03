@@ -16,4 +16,7 @@ sudo podman exec franck psql -e <<'SQL'
 call  ora$perf$define_perfstat_fdw('pdb1','//database-1.clw0gescgpyk.us-east-1.rds.amazonaws.com:1521/pdb1','perfstat');
 SQL
 git commit -am "psql connect" && git push
+sudo podman tag oracle-perfstat-fdw pachot/oracle-perfstat-fdw
+sudo podman login docker.io
+sudo podman push pachot/oracle-perfstat-fdw
 )

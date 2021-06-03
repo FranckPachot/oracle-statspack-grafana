@@ -12,3 +12,6 @@ podman exec oracle-perfstat-fdw psql -e <<'SQL'
 call  ora$perf$define_perfstat_fdw('pdb1','//database-1.clw0gescgpyk.us-east-1.rds.amazonaws.com:1521/pdb1','perfstat');
 SQL
 ```
+This creates the views to query Statspack.
+
+
