@@ -29,6 +29,8 @@ This creates the views to query Statspack on the database.
 - 5th argument default to false, drops the FDW server if set to true
 - 6th argument defaults to true, creates the FDW server
 
+# Example with PMM and Oracle XE
+
 ## run Percona Management Server
 You can use this from Grafana, declaring a PostgreSQL source, preferably creating a user with the right privileges. 
 
@@ -50,4 +52,4 @@ Then you can access Grafana on 443 port and declare a PostgreSQL source:
 
 ## import dashboards
 
-examples of dashboards in the grafana subdir
+examples of dashboards are in the grafana subdir, you can import them
