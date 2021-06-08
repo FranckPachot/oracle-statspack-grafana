@@ -13,7 +13,7 @@ sudo docker logs franck
 until sudo docker logs franck | grep -C 999 "listening on IPv4 address" ; do sleep 1; done
 echo "=== check"
 sudo docker exec franck psql -e <<'SQL'
- select  oraperfstat$define_fdw('pdb1','//localhost:1521/DEV15','PERFSTAT','password',true,true);
+ select  oraperfstat$define_fdw('XEPDB1','//localhost:1521/XEPDB1','PERFSTAT','password',true,true);
  select * from oraperfstat$available_servers();
  explain analyze select * from system_events;
 SQL
