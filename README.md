@@ -1,3 +1,5 @@
+(this is in alpha work mode, draft from a previous PoC, but you can try and comments are welcome)
+
 # oracle-statspack-grafana
 Using PostgreSQL Foreign Data Wrapper to read Oracle Statspack metrics from Grafana
 
