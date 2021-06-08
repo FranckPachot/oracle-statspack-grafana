@@ -3,7 +3,7 @@ Using PostgreSQL Foreign Data Wrapper to read Oracle Statspack metrics from Graf
 
 ## Build the image for the PostgreSQL Oracle_FDW gateway
 ```
-(cd oracle-perfstat-fdw && podman build -t oracle-perfstat-fdw && podman run -d -e POSTGRESQL_ADMIN_PASSWORD=franck --name oracle-perfstat-fdw oracle-perfstat-fdw )
+(cd oracle-perfstat-fdw && podman build -t oracle-perfstat-fdw . && podman run -d -e POSTGRESQL_ADMIN_PASSWORD=franck --name oracle-perfstat-fdw oracle-perfstat-fdw )
 ```
 
 The postgresql password, and the oraperfstat one, are POSTGRESQL_ADMIN_PASSWORD (default: postgres)
