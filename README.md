@@ -49,3 +49,5 @@ Then you can access Grafana on 443 port and declare a PostgreSQL source:
 - SSL Mode: disable
 
 ## import dashboards
+
+examples of dashboards in the grafana subdir
