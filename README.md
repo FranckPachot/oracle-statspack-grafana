@@ -55,3 +55,21 @@ Then you can access Grafana on 443 port and declare a PostgreSQL source:
 ## import dashboards
 
 examples of dashboards are in the grafana subdir, you can import them
+
+## Create an Oracle XE database
+and install Statspack
+
+```
+docker run -d -p 1521:1521 --network oracle-perfstat-fd -e ORACLE_PASSWORD=franck gvenzl/oracle-xe --name oraclexe
+docker exec -t oraclexe <<'SQL'
+sqlplus -L sys/oracle@//localhost/XE as sysdba @ ?/rdbms/admin/spcreate
+perfstat
+SYSAUX
+TEMP
+exec statspack.snap(i_snap_level=>7);
+exec for i in 1..100 loop dbms_stats.gather_system_stats('NOWORKLOAD'); dbms_stats.gather_database_stats; statspack.snap(i_snap_level=>7); end loop;
+quit
+SQL
+```
+
+You should see something in Grafana...
