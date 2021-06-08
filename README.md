@@ -39,9 +39,13 @@ docker create --volume /srv --name pmm-data percona/pmm-server:2 /bin/true
 docker run --detach --restart always --publish 443:443 --network oracle-perfstat-fdw --volumes-from pmm-data --name pmm-server percona/pmm-server:2
 ```
 
+## declare Data Source in Grafana
+
 Then you can access Grafana on 443 port and declare a PostgreSQL source:
 - Name: oracle-perfstat-fdw (which I set as default)
 - Host: oracle-perfstat-fdw:5432
 - User: postgres
 - Password: POSTGRESQL_ADMIN_PASSWORD (as defined above)
 - SSL Mode: disable
+
+## import dashboards
