@@ -46,14 +46,14 @@ This creates the views to query Statspack on the database.
 ## run Percona Management Server
 You can use this from Grafana, declaring a PostgreSQL source, preferably creating a user with the right privileges. 
 
-We need only Grafana but Percoma Managment Server contains Grafana and other components to monitor databases, easy to install:
+We need only Grafana but Percona Managment Server contains Grafana and other components to monitor databases, easy to install:
 ```
 docker pull percona/pmm-server:2
 docker create --volume /srv --name pmm-data percona/pmm-server:2 /bin/true
 docker run --detach --restart always --publish 443:443 --network oracle-perfstat-fdw --volumes-from pmm-data --name pmm-server percona/pmm-server:2
 ```
 
-## declare Data Source in Grafana
+## Declare Data Source in Grafana
 
 Then you can access Grafana on 443 port and declare a PostgreSQL source:
 - Name: Oracle Perf Stat (which I set as default)
@@ -68,7 +68,7 @@ Then you can access Grafana on 443 port and declare a PostgreSQL source:
 
 Note that if you run rootless (podman) and get *Error: cannot join CNI networks if running rootless: invalid argument* when starting containers with *--network oracle-perfstat-fdw* you can use the host name rather than the container name as the PostgreSQL host and the port you redirected with *-p 5432:5432*
 
-## import dashboards
+## Import dashboards
 
 examples of dashboards are in the grafana subdir, you can import them
 
