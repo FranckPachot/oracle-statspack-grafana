@@ -1,4 +1,8 @@
 (this is in alpha work mode, draft from a previous PoC, but you can try and comments are welcome)
+The goal is to see this without licensing Diagnostic Pack:
+
+![screenshot](./screenshots/Screenshot%202021-06-09%20142921.jpg)
+![screenshot](./screenshots/Screenshot%202021-06-09%20142450.jpg)
 
 # oracle-statspack-grafana
 Using PostgreSQL Foreign Data Wrapper to read Oracle Statspack metrics from Grafana
@@ -53,11 +57,16 @@ Then you can access Grafana on 443 port and declare a PostgreSQL source:
 - Password: POSTGRESQL_ADMIN_PASSWORD (as defined above)
 - SSL Mode: disable
 
+
+![screenshot](./screenshots/Screenshot%202021-06-09%20142159.jpg)
+
 Note that if you run rootless (podman) and get *Error: cannot join CNI networks if running rootless: invalid argument* when starting containers with *--network oracle-perfstat-fdw* you can use the host name rather than the container name as the PostgreSQL host and the port you redirected with *-p 5432:5432*
 
 ## import dashboards
 
 examples of dashboards are in the grafana subdir, you can import them
+
+![screenshot](./screenshots/Screenshot%202021-06-09%20142233.jpg)
 
 ## Create an Oracle XE database
 and install Statspack
