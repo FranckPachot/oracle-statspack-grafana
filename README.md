@@ -10,7 +10,7 @@ Using PostgreSQL Foreign Data Wrapper to read Oracle Statspack metrics from Graf
 
 ## Build the image for the PostgreSQL Oracle_FDW gateway
 ```
-(cd oracle-perfstat-fdw && podman build -t oracle-perfstat-fdw .)
+(cd oracle-perfstat-fdw && docker build -t oracle-perfstat-fdw .)
 ```
 You may prefer not to expose the 5432 port as you can connect with docker exec -it psql oraperfstat oraperfstat
 
@@ -24,7 +24,7 @@ The postgresql password, and the oraperfstat one, are POSTGRESQL_ADMIN_PASSWORD 
 
 The container runs PostgreSQL with Laurenz Albe's Oracle Foreign Data Wrapper (using Oracle instantClient) and provides a procedure to create Foreign Data Wrapper tables, here is an example:
 ```
-podman exec oracle-perfstat-fdw psql -e oraperfstat oraperfstat <<'SQL'
+docker exec oracle-perfstat-fdw psql -e oraperfstat oraperfstat <<'SQL'
 select  oraperfstat$define_fdw('pdb1','//server:1521/PDB1','perfstat','password',true,true);
 SQL
 ```
