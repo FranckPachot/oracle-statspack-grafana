@@ -48,6 +48,7 @@ docker run --detach --restart always --publish 443:443 --network oracle-perfstat
 Then you can access Grafana on 443 port and declare a PostgreSQL source:
 - Name: Oracle Perf Stat (which I set as default)
 - Host: oracle-perfstat-fdw:5432
+- Database: oracle-perfstat-fdw
 - User: postgres
 - Password: POSTGRESQL_ADMIN_PASSWORD (as defined above)
 - SSL Mode: disable
