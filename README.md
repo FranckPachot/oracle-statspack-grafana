@@ -53,6 +53,8 @@ Then you can access Grafana on 443 port and declare a PostgreSQL source:
 - Password: POSTGRESQL_ADMIN_PASSWORD (as defined above)
 - SSL Mode: disable
 
+Note that if you run rootless (podman) and get *Error: cannot join CNI networks if running rootless: invalid argument* when starting containers with *--network oracle-perfstat-fdw* you can use the host name rather than the container name as the PostgreSQL host and the port you redirected with *-p 5432:5432*
+
 ## import dashboards
 
 examples of dashboards are in the grafana subdir, you can import them
