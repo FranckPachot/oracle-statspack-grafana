@@ -14,7 +14,12 @@ Using PostgreSQL Foreign Data Wrapper to read Oracle Statspack metrics from Graf
 ```
 You may prefer not to expose the 5432 port as you can connect with docker exec -it psql oraperfstat oraperfstat
 
-## Build the image for the PostgreSQL Oracle_FDW gateway
+Note that you can also pull the image I've built:
+```
+docker pull docker.io/pachot/oracle-perfstat-fdw
+```
+
+## Run the image for the PostgreSQL Oracle_FDW gateway
 ```
 docker network create oracle-perfstat-fdw
 docker run -p 5432:5432 --network oracle-perfstat-fdw -d -e POSTGRESQL_ADMIN_PASSWORD=franck --name oracle-perfstat-fdw oracle-perfstat-fdw
