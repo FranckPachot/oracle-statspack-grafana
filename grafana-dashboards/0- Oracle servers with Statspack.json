@@ -358,7 +358,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "select $__time(startup_time),extract(epoch from coalesce(lead(startup_time)over(order by startup_time),localtimestamp)-startup_time)/60/60/24 as uptime\nfrom ${server:doublequote}.stats$database_instance order by 1 desc\n",
+          "rawSql": "select $__time(startup_time),extract(epoch from coalesce(lead(startup_time)over(order by startup_time),localtimestamp)-startup_time)/60/60/24 as uptime\nfrom ${server:doublequote}.database_instance order by 1 desc\n",
           "refId": "A",
           "select": [
             [
